@@ -7,7 +7,7 @@ public class JdbcTest {
 
 	
 	public static void main (String[] args)throws Exception {
-		
+//this is the test change
 String url="jdbc:mysql://localhost:3306/test";
 
 String user="root";
