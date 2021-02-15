@@ -1,39 +1,40 @@
 package databasecon;
-
 import java.sql.*;
 
 
+
+//import com.mysql.jdbc.Statement;
 public class JdbcTest {
 
+public static void main (String[] args)throws Exception {
 	
-	public static void main (String[] args)throws Exception {
-//this is the test change
-String url="jdbc:mysql://localhost:3306/test";
+	String url="jdbc:mysql://localhost:3306/test";
+	String uname="root";
+	String pass="root";
+	String sql="select * from student";
+	try{  	
+Class.forName("com.mysql.cj.jdbc.Driver");
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","root");
+PreparedStatement pst=con.prepareStatement(sql);
 
-String user="root";
-String pass="root";
-String Query="select * from student";
+ResultSet  rs=pst.executeQuery();
 
- Connection con=DriverManager.getConnection(url,user,pass);
- 
- Statement st=con.createStatement();
- 
- ResultSet rs=st.executeQuery(Query);
- 
- String stu_name;
- int stu_id;
- while(rs.next()){
-	 stu_name=rs.getString("name");
-	 stu_id=rs.getInt("sr_no");
-	 
-	 System.out.println(stu_id +" <- - -> " + stu_name);
-	 
-	 
- }
- 
- rs.close();
- st.close();
- con.close();	
-	}
-	}
+while (rs.next()) {
+	
+
+String sname=rs.getString("name");
+int rno=rs.getInt("sr_no");
+System.out.println(rno +"<->" +sname);	
+}
+rs.close();
+pst.close();
+con.close();
+	
+
+}catch(Exception e){ System.out.println(e);}  
+}
+}
+
+
+
 
