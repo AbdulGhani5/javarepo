@@ -1,3 +1,5 @@
+//this is sample programe to connect mysql database using JDBC and get students name and roll number 
+
 package databasecon;
 import java.sql.*;
 
